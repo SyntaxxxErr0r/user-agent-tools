@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -e
+
+#
+#  Maven wrapper for easy build version deduction
+#
+
+BUILD_VERSION=$(git describe --long)
+mvn $@ -Dbuild.version="${BUILD_VERSION}"

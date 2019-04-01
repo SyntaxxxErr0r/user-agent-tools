@@ -1,0 +1,15 @@
+dist: trusty
+language: java
+
+cache:
+  directories:
+  - $HOME/.m2
+
+before_install:
+- cp scripts/settings.xml $HOME/.m2/settings.xml
+
+install:
+# Download all necessary dependencies but don't run tests
+- mvn -Dskip.docker=true -DskipITs -DskipTests=true test
+script:
+- ./scripts/build.sh
